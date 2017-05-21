@@ -2,12 +2,22 @@ $(onReady);
 
 var objective = [];
 var output = '';
-
+var j = 0;
+var effect = document.createElement('audio');
+effect.autoplay = false;
 
 
 function onReady(){
 console.log('js loaded');
 $(".button").click(function(){
+    //starteffect
+    effect.src = effectsArray[j];
+    soundEffect();
+    j++;
+    if(j > effectsArray.length-1){
+      j=0;
+    }
+  //end effect
     var toAdd = $('input[name=checkListItem]').val();
     console.log(toAdd);
     if( toAdd === '' || toAdd === undefined ){
@@ -67,6 +77,10 @@ function deleteMessage(){
 $(this).remove();
 }
 
+function soundEffect(){
+    effect.play();
+    console.log('j=', j, 'n/ sound effectsArray: ', effectsArray[j]);
+    }
 
 
 
